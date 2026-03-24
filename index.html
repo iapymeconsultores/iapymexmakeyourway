@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IApyme × Make Your Way — Seoul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#faf8f4;--bg2:#f3f0ea;--surface:#fff;--surface2:#f7f5f0;
+  --ink:#1a1815;--ink2:#4a4640;--ink3:#8a857d;--ink4:#b5b0a6;
+  --accent:#c4501a;--accent2:#2d6a5a;--warm:#e8835a;--teal:#3a8f7a;
+  --gold:#c9a84c;--rose:#b85c6e;--deep:#1a1815;
+  --font-serif:'Instrument Serif',Georgia,serif;
+  --font-sans:'Manrope',system-ui,sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+  --max-w:1080px;--gap:140px;
+}
+html{scroll-behavior:smooth;background:var(--bg)}
+body{font-family:var(--font-sans);color:var(--ink);background:var(--bg);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.rv{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.rv.v{opacity:1;transform:translateY(0)}
+.rv-d1{transition-delay:.08s}.rv-d2{transition-delay:.16s}.rv-d3{transition-delay:.24s}
+.rv-d4{transition-delay:.32s}.rv-d5{transition-delay:.4s}.rv-d6{transition-delay:.48s}
+.w{max-width:var(--max-w);margin:0 auto;padding:0 32px}
+section{padding:var(--gap) 0;position:relative}
+.sec-label{font-family:var(--font-mono);font-size:11px;color:var(--ink3);letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:12px}
+.sec-label::before{content:'';display:block;width:24px;height:1px;background:var(--ink4)}
+.sec-title{font-family:var(--font-serif);font-weight:400;font-size:clamp(32px,5.5vw,52px);line-height:1.12;margin-bottom:20px;color:var(--ink);letter-spacing:-.01em}
+.sec-title em{font-style:italic;color:var(--accent)}
+.sec-sub{font-size:16px;color:var(--ink2);max-width:540px;line-height:1.7}
+
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--deep);color:#f0ece4}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 40%,rgba(196,80,26,.12),transparent),radial-gradient(ellipse 60% 50% at 20% 70%,rgba(45,106,90,.08),transparent),var(--deep)}
+.hero-grid{position:absolute;inset:0;opacity:.04;background-image:linear-gradient(rgba(255,255,255,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.3) 1px,transparent 1px);background-size:80px 80px}
+.hero .w{position:relative;z-index:1;padding-top:80px;padding-bottom:80px}
+.hero-pre{font-family:var(--font-mono);font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.3em;text-transform:uppercase;margin-bottom:48px}
+.hero h1{font-family:var(--font-serif);font-weight:400;font-size:clamp(48px,10vw,96px);line-height:.95;letter-spacing:-.02em;margin-bottom:8px}
+.hero h1 .h-accent{color:var(--warm)}
+.hero h1 .h-teal{color:var(--teal)}
+.hero .hero-x{font-family:var(--font-serif);font-style:italic;font-size:clamp(20px,3vw,32px);color:rgba(255,255,255,.3);margin:4px 0 4px 4px}
+.hero-desc{font-size:17px;color:rgba(255,255,255,.55);max-width:480px;margin:40px 0 0;line-height:1.75}
+.hero-cta{margin-top:48px}
+.hero-cta a{display:inline-flex;align-items:center;gap:10px;padding:15px 32px;border-radius:4px;font-weight:600;font-size:14px;background:var(--warm);color:#fff;text-decoration:none;transition:background .3s;letter-spacing:.02em}
+.hero-cta a:hover{background:#d4704a}
+.hero-cta a svg{transition:transform .3s}
+.hero-cta a:hover svg{transform:translateY(2px)}
+.hero-stats{display:flex;gap:1px;margin-top:64px;background:rgba(255,255,255,.06);border-radius:6px;overflow:hidden;max-width:680px}
+.hero-stat{flex:1;padding:24px 16px;text-align:center;background:rgba(0,0,0,.3)}
+.hero-stat-val{font-family:var(--font-serif);font-size:28px;color:#f0ece4;line-height:1;margin-bottom:4px}
+.hero-stat-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.35)}
+
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+@media(max-width:768px){.team-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:500px){.team-grid{grid-template-columns:1fr}}
+.person{border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:28px 24px;background:var(--surface);position:relative;overflow:hidden;transition:border-color .3s,box-shadow .3s}
+.person:hover{border-color:rgba(0,0,0,.12);box-shadow:0 8px 32px rgba(0,0,0,.04)}
+.person-co{font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:16px;padding:3px 8px;border-radius:3px;display:inline-block}
+.person-co.iapyme{color:var(--accent2);background:rgba(45,106,90,.06);border:1px solid rgba(45,106,90,.1)}
+.person-co.myw{color:var(--rose);background:rgba(184,92,110,.06);border:1px solid rgba(184,92,110,.1)}
+.person-name{font-family:var(--font-serif);font-size:20px;margin-bottom:2px}
+.person-role{font-size:12px;color:var(--ink3);margin-bottom:14px;font-weight:500}
+.person p{font-size:13px;color:var(--ink2);line-height:1.65}
+.person-init{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-mono);font-size:12px;font-weight:500}
+.person-init.iapyme{background:rgba(45,106,90,.08);color:var(--accent2)}
+.person-init.myw{background:rgba(184,92,110,.08);color:var(--rose)}
+.callout{margin-top:48px;padding:28px 32px;border-radius:6px;border-left:3px solid var(--accent);background:var(--surface);box-shadow:0 2px 12px rgba(0,0,0,.03)}
+.callout p{font-size:15px;color:var(--ink2);line-height:1.7}
+.callout strong{color:var(--ink);font-weight:600}
+
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+@media(max-width:768px){.why-grid{grid-template-columns:1fr}}
+.why{border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:32px 28px;background:var(--surface);transition:border-color .3s,transform .3s;position:relative}
+.why:hover{border-color:rgba(0,0,0,.12);transform:translateY(-2px)}
+.why-num{font-family:var(--font-mono);font-size:32px;font-weight:500;color:var(--bg2);line-height:1;margin-bottom:16px;position:absolute;top:24px;right:24px}
+.why h3{font-family:var(--font-serif);font-size:19px;margin-bottom:10px;font-weight:400;padding-right:40px}
+.why p{font-size:13px;color:var(--ink2);line-height:1.65}
+
+.mod-section-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;padding:6px 14px;border-radius:3px;display:inline-block;margin-bottom:20px}
+.mod-section-label.ai{color:var(--accent2);background:rgba(45,106,90,.06);border:1px solid rgba(45,106,90,.12)}
+.mod-section-label.dt{color:var(--rose);background:rgba(184,92,110,.06);border:1px solid rgba(184,92,110,.12)}
+.mod-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:48px}
+@media(max-width:700px){.mod-grid{grid-template-columns:1fr}}
+.mod{border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:28px 26px;background:var(--surface);position:relative;transition:border-color .3s;overflow:hidden}
+.mod:hover{border-color:rgba(0,0,0,.12)}
+.mod::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px}
+.mod.ai-t::before{background:linear-gradient(90deg,var(--teal),rgba(58,143,122,.2))}
+.mod.dt-t::before{background:linear-gradient(90deg,var(--rose),rgba(184,92,110,.2))}
+.mod-dur{font-family:var(--font-mono);font-size:11px;color:var(--ink3);float:right;margin-top:2px}
+.mod h3{font-family:var(--font-serif);font-size:18px;font-weight:400;margin-bottom:10px;padding-right:50px}
+.mod p{font-size:13px;color:var(--ink2);line-height:1.6}
+.mod-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:14px}
+.mod-tag{font-family:var(--font-mono);font-size:10px;padding:3px 9px;border-radius:3px;background:var(--bg2);color:var(--ink3)}
+
+.method-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:48px 0 40px;border-radius:8px;overflow:hidden}
+@media(max-width:600px){.method-flow{grid-template-columns:1fr 1fr}}
+.method-step{padding:32px 24px;text-align:center;position:relative}
+.method-step:nth-child(1){background:rgba(58,143,122,.06)}
+.method-step:nth-child(2){background:rgba(196,80,26,.05)}
+.method-step:nth-child(3){background:rgba(184,92,110,.05)}
+.method-step:nth-child(4){background:rgba(201,168,76,.06)}
+.method-num{font-family:var(--font-mono);font-size:10px;color:var(--ink3);letter-spacing:.15em;margin-bottom:10px}
+.method-name{font-family:var(--font-serif);font-size:17px;margin-bottom:8px}
+.method-desc{font-size:12px;color:var(--ink3);line-height:1.5}
+.method-arrow{position:absolute;right:-8px;top:50%;transform:translateY(-50%);color:var(--ink4);font-size:14px;z-index:1}
+@media(max-width:600px){.method-arrow{display:none}}
+.method-layers{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.method-layers{grid-template-columns:1fr}}
+.method-layer{border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:28px;background:var(--surface)}
+.method-layer h3{font-family:var(--font-serif);font-size:18px;margin-bottom:8px;font-weight:400}
+.method-layer p{font-size:13px;color:var(--ink2);line-height:1.65}
+.ml-icon{width:40px;height:40px;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.ml-icon.dt-i{background:rgba(184,92,110,.08)}
+.ml-icon.ai-i{background:rgba(45,106,90,.08)}
+
+.fmt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+@media(max-width:700px){.fmt-grid{grid-template-columns:1fr}}
+.fmt{border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:32px 28px;background:var(--surface);transition:all .3s;position:relative}
+.fmt:hover{border-color:rgba(0,0,0,.12);transform:translateY(-2px)}
+.fmt.feat{border-color:rgba(196,80,26,.2);background:linear-gradient(180deg,rgba(196,80,26,.02),var(--surface))}
+.fmt-badge{position:absolute;top:-10px;left:24px;font-family:var(--font-mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;padding:3px 10px;border-radius:3px;background:var(--accent);color:#fff}
+.fmt-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:var(--bg2)}
+.fmt h3{font-family:var(--font-serif);font-size:20px;margin-bottom:4px;font-weight:400}
+.fmt-meta{font-family:var(--font-mono);font-size:11px;color:var(--ink3);margin-bottom:14px}
+.fmt p{font-size:13px;color:var(--ink2);line-height:1.65}
+
+.lyr-grid{display:flex;flex-direction:column;gap:14px;margin-top:40px}
+.lyr{display:grid;grid-template-columns:56px 1fr;gap:24px;border:1px solid rgba(0,0,0,.06);border-radius:8px;padding:28px 32px;background:var(--surface);align-items:start;transition:all .3s}
+.lyr:hover{border-color:rgba(0,0,0,.12);transform:translateX(3px)}
+.lyr-num{font-family:var(--font-serif);font-size:36px;color:var(--ink4);line-height:1}
+.lyr h3{font-family:var(--font-serif);font-size:18px;margin-bottom:6px;font-weight:400}
+.lyr p{font-size:14px;color:var(--ink2);line-height:1.65}
+
+.tl{position:relative;padding-left:36px;margin-top:40px}
+.tl::before{content:'';position:absolute;left:6px;top:6px;bottom:6px;width:1px;background:var(--ink4);opacity:.3}
+.tl-item{position:relative;padding-bottom:40px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-33px;top:6px;width:9px;height:9px;border-radius:50%;border:1.5px solid var(--ink3);background:var(--bg)}
+.tl-item:nth-child(1) .tl-dot{border-color:var(--warm);background:rgba(232,131,90,.15)}
+.tl-item:nth-child(2) .tl-dot{border-color:var(--rose);background:rgba(184,92,110,.15)}
+.tl-item:nth-child(3) .tl-dot{border-color:var(--teal);background:rgba(58,143,122,.15)}
+.tl-item:nth-child(4) .tl-dot{border-color:var(--gold);background:rgba(201,168,76,.15)}
+.tl-date{font-family:var(--font-mono);font-size:11px;color:var(--ink3);margin-bottom:3px}
+.tl-title{font-family:var(--font-serif);font-size:17px;margin-bottom:6px}
+.tl-desc{font-size:13px;color:var(--ink2);line-height:1.6;max-width:540px}
+
+.trust-cat{font-family:var(--font-mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;margin-top:28px}
+.trust-cat:first-child{margin-top:0}
+.trust-row{display:flex;flex-wrap:wrap;gap:8px}
+.trust-item{padding:8px 16px;border-radius:4px;font-size:13px;color:var(--ink2);background:var(--surface);border:1px solid rgba(0,0,0,.06);font-weight:500;transition:all .3s}
+.trust-item:hover{border-color:rgba(0,0,0,.12)}
+
+.cta{background:var(--deep);color:#f0ece4;padding:100px 0;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(196,80,26,.08),transparent);pointer-events:none}
+.cta .w{position:relative;z-index:1}
+.cta-title{font-family:var(--font-serif);font-size:clamp(28px,5vw,48px);font-weight:400;margin-bottom:16px;line-height:1.15}
+.cta-sub{font-size:16px;color:rgba(255,255,255,.5);max-width:440px;margin:0 auto 40px;line-height:1.7}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:4px;font-weight:600;font-size:15px;background:var(--warm);color:#fff;text-decoration:none;border:none;cursor:pointer;font-family:var(--font-sans);letter-spacing:.02em;transition:background .3s}
+.cta-btn:hover{background:#d4704a}
+.cta-contacts{margin-top:24px;display:flex;gap:24px;justify-content:center;font-size:13px;color:rgba(255,255,255,.35)}
+footer{text-align:center;padding:32px;border-top:1px solid rgba(0,0,0,.04)}
+footer p{font-size:11px;color:var(--ink4)}
+.flex-note{margin-top:24px;padding:20px 24px;border-radius:6px;background:var(--surface2);border:1px solid rgba(0,0,0,.04);font-size:13px;color:var(--ink2);line-height:1.6}
+.flex-note strong{color:var(--ink)}
+@media(max-width:600px){:root{--gap:80px}.hero h1{font-size:clamp(36px,12vw,64px)}.hero-stats{flex-direction:column}.why-grid{grid-template-columns:1fr}.method-flow{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="w">
+    <p class="hero-pre">Joint Training Proposal &mdash; Seoul, March 2026</p>
+    <h1><span class="h-accent">IApyme</span></h1>
+    <p class="hero-x">&times;</p>
+    <h1><span class="h-teal">Make Your Way</span></h1>
+    <p class="hero-desc">AI acceleration meets structured innovation methodology. A joint training programme for international startup hubs in Seoul — practical, proven, and ready to deploy.</p>
+    <div class="hero-cta">
+      <a href="#cta">Explore the proposal <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 1v12M1 7l6 6 6-6"/></svg></a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-val">100+</div><div class="hero-stat-lbl">Companies</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">5</div><div class="hero-stat-lbl">Countries</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">15+</div><div class="hero-stat-lbl">Institutions</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">300+</div><div class="hero-stat-lbl">Participants</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">100%</div><div class="hero-stat-lbl">Satisfaction</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="rv">
+      <div class="sec-label">01 &mdash; Who We Are</div>
+      <h2 class="sec-title">Two teams, one mission:<br><em>accelerate founders.</em></h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:32px" class="rv rv-d1">
+      <p style="font-size:15px;color:var(--ink2);line-height:1.75"><strong style="color:var(--accent2)">IApyme Consultores</strong> is an AI and innovation consulting firm for SMEs and startups, co-founded at Mondragon University's LEINN programme — one of Europe's leading entrepreneurship degrees. Specialising in practical AI adoption: tool implementation, process automation, and founder training. Over 100 companies served across Spain with 100% client satisfaction.</p>
+      <p style="font-size:15px;color:var(--ink2);line-height:1.75"><strong style="color:var(--rose)">Make Your Way</strong>, powered by Rivia Education Holding, delivers Design Thinking programmes that develop soft skills critical for the modern business market. Validated across 4 countries, 3 continents, 15+ educational institutions and 300+ participants. Their methodology has produced 40+ prototypes addressing real-world challenges.</p>
+    </div>
+    <div class="team-grid rv rv-d2">
+      <div class="person"><div class="person-init iapyme">IG</div><div class="person-co iapyme">IApyme Consultores</div><div class="person-name">Iker Garcia</div><div class="person-role">CEO &amp; Co-founder</div><p>Strategy, client relationships, and AI programme design. Third-year LEINN student at Mondragon University. Has led AI training and onboarding across 100+ companies in Spain.</p></div>
+      <div class="person"><div class="person-init iapyme">OP</div><div class="person-co iapyme">IApyme Consultores</div><div class="person-name">Oier Perez</div><div class="person-role">CTO &amp; Co-founder</div><p>Technical implementation, tooling, and systems architecture. Co-architect of IApyme's consulting methodology. Bridges deep technical knowledge with accessible business outcomes.</p></div>
+      <div class="person"><div class="person-init myw">IA</div><div class="person-co myw">Make Your Way</div><div class="person-name">Irati Amondarain</div><div class="person-role">Programme Lead</div><p>Designs and facilitates Design Thinking workshops across international settings. Experienced in adapting innovation methodology to diverse cultural and educational contexts.</p></div>
+      <div class="person"><div class="person-init myw">EC</div><div class="person-co myw">Make Your Way</div><div class="person-name">Elisa Cano</div><div class="person-role">Innovation Facilitator</div><p>Leads ideation and prototyping sessions. Specialises in structured brainstorming frameworks and translating early-stage ideas into testable concepts with business viability.</p></div>
+      <div class="person"><div class="person-init myw">LE</div><div class="person-co myw">Make Your Way</div><div class="person-name">Leire Eiguren</div><div class="person-role">User Research &amp; Validation</div><p>Expert in user research, buyer persona development, and validation methodologies. Ensures every prototype is grounded in real user needs before committing resources.</p></div>
+      <div class="person"><div class="person-init myw">PG</div><div class="person-co myw">Make Your Way</div><div class="person-name">Paula Goitia</div><div class="person-role">Pitch &amp; Communication Coach</div><p>Coaches founders on pitch structure, storytelling, and presentation delivery. Prepares teams to communicate their ideas with clarity and conviction to investors and partners.</p></div>
+    </div>
+    <div class="callout rv rv-d3"><p><strong>The unique angle —</strong> Six European innovation professionals, physically present in Seoul, combining battle-tested AI consulting with globally validated Design Thinking methodology. We don't lecture — we build alongside your founders.</p></div>
+  </div>
+</section>
+
+<section style="background:var(--surface2)">
+  <div class="w">
+    <div class="rv"><div class="sec-label">02 &mdash; Why This Works</div><h2 class="sec-title">The right offer at the <em>right moment.</em></h2><p class="sec-sub">Seoul's startup hubs host international founders building at speed. That's precisely where AI tools combined with structured innovation methodology create the highest leverage.</p></div>
+    <div class="why-grid">
+      <div class="why rv rv-d1"><div class="why-num">01</div><h3>Founders learn by doing</h3><p>Our training is built for people shipping product — fast, practical, immediately applicable. Across 10+ workshops and hackathons on three continents, we've refined what works.</p></div>
+      <div class="why rv rv-d2"><div class="why-num">02</div><h3>AI moves too fast to ignore</h3><p>Vibe coding, autonomous agents, AI-assisted operations — all available today. Your startups can ship significantly faster if they understand how to use what already exists.</p></div>
+      <div class="why rv rv-d3"><div class="why-num">03</div><h3>Innovation needs structure</h3><p>Ideas without methodology die. Our Double Diamond framework, supported by proprietary templates and materials, turns ambiguity into validated, investable solutions.</p></div>
+      <div class="why rv rv-d4"><div class="why-num">04</div><h3>We're here — not remote</h3><p>Physical presence matters. Workshops, office hours, spontaneous conversations in the hub. In-person intensity, not a webinar. Available until April 17th.</p></div>
+      <div class="why rv rv-d5"><div class="why-num">05</div><h3>Compound value for your hub</h3><p>Your startups extract more from their residency. You differentiate your programme with a unique international AI + innovation offering. Both sides gain.</p></div>
+      <div class="why rv rv-d6"><div class="why-num">06</div><h3>Proven across continents</h3><p>From Bilbao to Brooklyn, Pune to Seoul — our methodologies have been validated with 300+ participants, 40+ prototypes, and partnerships with 15+ educational institutions.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="rv"><div class="sec-label">03 &mdash; Training Modules</div><h2 class="sec-title">What we <em>teach.</em></h2><p class="sec-sub">Two complementary tracks — AI acceleration and innovation design — that can be combined, mixed, or delivered independently based on your community's priorities.</p></div>
+    <div style="margin-top:48px">
+      <div class="mod-section-label ai rv">AI Acceleration &mdash; by IApyme Consultores</div>
+      <div class="mod-grid">
+        <div class="mod ai-t rv rv-d1"><div class="mod-dur">2–3 h</div><h3>AI Onboarding for Startups</h3><p>From zero to operational. Hands-on session covering the current AI tool landscape, practical selection criteria for early-stage startups, and a live workflow build that participants take away.</p><div class="mod-tags"><span class="mod-tag">ChatGPT</span><span class="mod-tag">Perplexity</span><span class="mod-tag">Notion AI</span><span class="mod-tag">Workflow Automation</span></div></div>
+        <div class="mod ai-t rv rv-d2"><div class="mod-dur">3 h</div><h3>Vibe Coding: Ship Faster with AI</h3><p>AI-assisted development for non-technical founders. Prompt-to-product thinking and tools like Cursor, v0, and Replit to move from concept to functional MVP in a single session.</p><div class="mod-tags"><span class="mod-tag">Cursor</span><span class="mod-tag">v0</span><span class="mod-tag">Replit</span><span class="mod-tag">MVP Development</span></div></div>
+        <div class="mod ai-t rv rv-d3"><div class="mod-dur">2.5 h</div><h3>Process Agility + AI Ops</h3><p>Lean AI-augmented operations for small teams. Process mapping, identifying automation opportunities, and building workflows that scale without adding headcount.</p><div class="mod-tags"><span class="mod-tag">Make / Zapier</span><span class="mod-tag">Notion</span><span class="mod-tag">Lean Operations</span></div></div>
+        <div class="mod ai-t rv rv-d4"><div class="mod-dur">2 h</div><h3>AI Content &amp; Go-to-Market</h3><p>Building an AI-powered content engine for faster launches. From landing pages to social strategy and automated email flows — practical outputs, not theory.</p><div class="mod-tags"><span class="mod-tag">Content Strategy</span><span class="mod-tag">Landing Pages</span><span class="mod-tag">GTM Automation</span></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="mod-section-label dt rv">Innovation &amp; Design &mdash; by Make Your Way</div>
+      <div class="mod-grid">
+        <div class="mod dt-t rv rv-d1"><div class="mod-dur">2 h</div><h3>Problem Discovery &amp; User Research</h3><p>Identifying genuine challenges worth solving. Buyer Persona methodology, context analysis, and needs mapping. Every programme starts here — the foundation for everything that follows.</p><div class="mod-tags"><span class="mod-tag">Design Thinking</span><span class="mod-tag">Buyer Persona</span><span class="mod-tag">Context Analysis</span></div></div>
+        <div class="mod dt-t rv rv-d2"><div class="mod-dur">2 h</div><h3>Structured Ideation</h3><p>Generating solutions through structured brainstorming and COCD Box frameworks. Prioritisation by impact versus effort. Defining a clear value proposition with business rationale.</p><div class="mod-tags"><span class="mod-tag">Brainstorming</span><span class="mod-tag">COCD Box</span><span class="mod-tag">Impact Mapping</span></div></div>
+        <div class="mod dt-t rv rv-d3"><div class="mod-dur">2 h</div><h3>Rapid Prototyping &amp; Validation</h3><p>Building quick prototypes and validating assumptions with evidence — surveys, landing page tests, fake door experiments. Converting intuition into data before committing resources.</p><div class="mod-tags"><span class="mod-tag">Prototyping</span><span class="mod-tag">Fake Door Tests</span><span class="mod-tag">Survey Design</span></div></div>
+        <div class="mod dt-t rv rv-d4"><div class="mod-dur">2 h</div><h3>Pitch Preparation &amp; Storytelling</h3><p>Structuring compelling pitches with narrative techniques. Four-minute presentations with expert feedback. Participants leave ready to present to investors and partners with confidence.</p><div class="mod-tags"><span class="mod-tag">Pitch Structure</span><span class="mod-tag">Storytelling</span><span class="mod-tag">Live Feedback</span></div></div>
+      </div>
+    </div>
+    <div class="flex-note rv"><strong>Flexibility note —</strong> These modules function as standalone sessions, as part of a single track, or woven together across both tracks into a comprehensive programme. Duration, sequencing, and depth are all open to discussion. We can also co-design a custom module around challenges specific to your community.</div>
+  </div>
+</section>
+
+<section style="background:var(--surface2)">
+  <div class="w">
+    <div class="rv"><div class="sec-label">04 &mdash; Methodology</div><h2 class="sec-title">Double Diamond <em>enhanced with AI.</em></h2><p class="sec-sub">Based on the Design Council's globally recognised innovation model, augmented with AI tools at every stage. Each phase is supported by proprietary templates and practical materials.</p></div>
+    <div class="method-flow rv rv-d1">
+      <div class="method-step"><div class="method-num">Phase 01</div><div class="method-name">Identify Challenge</div><div class="method-desc">Research context, define the problem worth solving</div><div class="method-arrow">&rarr;</div></div>
+      <div class="method-step"><div class="method-num">Phase 02</div><div class="method-name">Research &amp; Define</div><div class="method-desc">User analysis, buyer persona, needs mapping</div><div class="method-arrow">&rarr;</div></div>
+      <div class="method-step"><div class="method-num">Phase 03</div><div class="method-name">Ideate &amp; Prototype</div><div class="method-desc">Structured brainstorming, rapid prototyping</div><div class="method-arrow">&rarr;</div></div>
+      <div class="method-step"><div class="method-num">Phase 04</div><div class="method-name">Validate &amp; Pitch</div><div class="method-desc">Evidence-based validation, investor-ready pitch</div></div>
+    </div>
+    <div class="method-layers rv rv-d2">
+      <div class="method-layer"><div class="ml-icon dt-i"><svg width="20" height="20" fill="none" stroke="#b85c6e" stroke-width="1.5" stroke-linecap="round"><circle cx="10" cy="10" r="8"/><path d="M10 6v4l3 2"/></svg></div><h3>Design Thinking Layer</h3><p>Structured problem-solving framework developed over three years across four countries. Buyer persona templates, COCD Box ideation, rapid prototyping methods, and validation playbooks. Guided step-by-step with proprietary materials at every stage.</p></div>
+      <div class="method-layer"><div class="ml-icon ai-i"><svg width="20" height="20" fill="none" stroke="#2d6a5a" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M7 10h6M10 7v6"/></svg></div><h3>AI Acceleration Layer</h3><p>At each stage, AI tools amplify speed and output quality. Research with Perplexity, prototype with v0 and Cursor, validate with AI-generated landing pages, prepare pitches with AI-assisted storytelling. Technology as multiplier, not replacement.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="rv"><div class="sec-label">05 &mdash; Programme Formats</div><h2 class="sec-title">Choose your <em>intensity.</em></h2><p class="sec-sub">Three delivery formats for different levels of depth and time investment. All include proprietary templates, expert feedback, and work on real projects.</p></div>
+    <div class="fmt-grid">
+      <div class="fmt rv rv-d1"><div class="fmt-icon"><svg width="22" height="22" fill="none" stroke="var(--warm)" stroke-width="1.5" stroke-linecap="round"><path d="M11 2v4M11 16v4M2 11h4M16 11h4"/><circle cx="11" cy="11" r="4"/></svg></div><h3>Intensive Sprint</h3><div class="fmt-meta">3 days &middot; 2 h/day &middot; 6 hours total</div><p>Maximum speed. Day 1: understand the problem. Day 2: generate and prioritise solutions. Day 3: prototype, validate, and pitch. For hubs with tight schedules and high energy.</p></div>
+      <div class="fmt feat rv rv-d2"><div class="fmt-badge">Recommended</div><div class="fmt-icon"><svg width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="16" height="16" rx="2"/><path d="M3 9h16M9 3v16"/></svg></div><h3>Standard Programme</h3><div class="fmt-meta">6 sessions &middot; 2 h each &middot; 12 hours total</div><p>Balanced depth and pacing. Six sessions from innovation mindset through research, ideation, prototyping, and pitch — with time between for teams to iterate.</p></div>
+      <div class="fmt rv rv-d3"><div class="fmt-icon"><svg width="22" height="22" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round"><polygon points="11,2 20,8 20,16 11,22 2,16 2,8"/><circle cx="11" cy="12" r="3"/></svg></div><h3>Premium Deep-Dive</h3><div class="fmt-meta">3 weeks &middot; 2 sessions/week &middot; 12 h + mentoring</div><p>Full transformation. Week 1: problem and user. Week 2: ideation and value proposition. Week 3: prototype, validation, and final pitch. Plus optional mentoring close.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--surface2)">
+  <div class="w">
+    <div class="rv"><div class="sec-label">06 &mdash; Beyond the Workshop</div><h2 class="sec-title">Three layers of <em>value.</em></h2></div>
+    <div class="lyr-grid">
+      <div class="lyr rv rv-d1"><div class="lyr-num">1</div><div><h3>Group Workshops</h3><p>The core training sessions detailed above — open to all hub startups. Practical, hands-on, delivered in English. Combining AI modules with Design Thinking sessions at a rhythm of one to two per week during our stay.</p></div></div>
+      <div class="lyr rv rv-d2"><div class="lyr-num">2</div><div><h3>1:1 Founder Mentoring</h3><p>Focused one-hour consultations on specific AI adoption or innovation challenges. We examine the product, workflow, or team in detail and deliver targeted, actionable guidance that founders can implement immediately.</p></div></div>
+      <div class="lyr rv rv-d3"><div class="lyr-num">3</div><div><h3>Express AI Audit &amp; Innovation Hackathon</h3><p>A structured two-hour audit: diagnose current operations, identify highest-leverage AI integration opportunities, and deliver a concrete implementation roadmap. Alternatively, a full-day hackathon combining the Double Diamond process with AI tools for rapid collaborative solution development.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="w">
+    <div class="rv"><div class="sec-label">07 &mdash; Availability</div><h2 class="sec-title">We're in Seoul until <em>April 17.</em></h2><p class="sec-sub">We can begin immediately. The schedule below is indicative — open to structuring around your hub's existing calendar.</p></div>
+    <div class="tl rv rv-d1">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Week 1 — Late March</div><div class="tl-title">Kickoff, AI Onboarding &amp; Problem Discovery</div><div class="tl-desc">Introduction sessions from both teams. Community meet and greet. Opening workshops: AI tool fundamentals (IApyme) and Design Thinking foundations (Make Your Way). Identify priority areas for subsequent sessions.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Week 2 — Early April</div><div class="tl-title">Vibe Coding, Process Agility &amp; Structured Ideation</div><div class="tl-desc">Two focused AI sessions on development tools and operational automation. Parallel ideation and prioritisation workshops using COCD Box methodology. 1:1 mentoring slots open for founders.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Week 3 — Mid April</div><div class="tl-title">Prototyping, Validation &amp; Express Audits</div><div class="tl-desc">AI Content and Go-to-Market session. Rapid prototyping with AI tools. Validation methodology sessions. Express AI Audit deep-dives for startups seeking operational transformation.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">April 17 — Departure</div><div class="tl-title">Pitch Day, Wrap-up &amp; Remote Continuity</div><div class="tl-desc">Final pitch presentations with structured expert feedback. Closing session consolidating key takeaways and next steps. Post-departure remote support and follow-up mentoring available.</div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--surface2)">
+  <div class="w" style="text-align:center">
+    <div class="rv"><div class="sec-label" style="justify-content:center">08 &mdash; Who Trusts Us</div><h2 class="sec-title">Validated across <em>five countries.</em></h2><p class="sec-sub" style="margin:0 auto 48px">Organisations across sectors and continents that have trusted our teams to lead their AI adoption and innovation programmes.</p></div>
+    <div style="text-align:left;max-width:760px;margin:0 auto" class="rv rv-d1">
+      <div class="trust-cat">Partners &amp; Academic Collaborators</div>
+      <div class="trust-row"><div class="trust-item">Mondragon Team Academy</div><div class="trust-item">Rivia Education Holding</div><div class="trust-item">Mondragon Unibertsitatea</div></div>
+      <div class="trust-cat">Clients — Spain</div>
+      <div class="trust-row"><div class="trust-item">Artxandako Trueba Ikastetxea</div><div class="trust-item">Politeknika Txorierri</div><div class="trust-item">Askartza Claret</div><div class="trust-item">Batera</div><div class="trust-item">Jesuitinas Bilbao</div><div class="trust-item">IES Botikazar BHI</div><div class="trust-item">Lea Artibai Ikastetxea</div><div class="trust-item">Gráficas Amurrio</div><div class="trust-item">Amurrioko Enpresak</div></div>
+      <div class="trust-cat">Clients — International</div>
+      <div class="trust-row"><div class="trust-item">Pune Institute of Business Management</div><div class="trust-item">Dock 72 — Brooklyn Navy Yard</div><div class="trust-item">Kirloskar Institute of Management</div><div class="trust-item">Atelier Gardens — Berlin</div><div class="trust-item">AIAIMS</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="w">
+    <div class="rv"><h2 class="cta-title">Ready to build<br>something <em style="font-family:var(--font-serif);font-style:italic">extraordinary?</em></h2><p class="cta-sub">Let's design the right programme for your hub. Reach out and we'll shape this together.</p></div>
+    <div class="rv rv-d1">
+      <a class="cta-btn" href="mailto:iapymeconsultores@gmail.com?subject=Programme%20Proposal%20%E2%80%94%20IApyme%20%C3%97%20Make%20Your%20Way&body=Hello%2C%0A%0AWe're%20interested%20in%20discussing%20the%20IApyme%20%C3%97%20Make%20Your%20Way%20training%20programme%20for%20our%20hub.%0A%0AHub%20name%3A%20%0ACohort%20size%3A%20%0AKey%20interests%3A%20%0A%0ALooking%20forward%20to%20connecting.">Get in touch <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <div class="cta-contacts"><span>iapymeconsultores@gmail.com</span><span>&middot;</span><span>infor@makeyourway.es</span></div>
+    </div>
+  </div>
+</section>
+<footer><p>IApyme Consultores &times; Make Your Way &mdash; Seoul, 2026</p><p style="margin-top:4px">Powered by Rivia Education Holding &amp; Mondragon University</p></footer>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const o=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');o.unobserve(e.target)}})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(el=>o.observe(el));
+});
+</script>
+</body>
+</html>
